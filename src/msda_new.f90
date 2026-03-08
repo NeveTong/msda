@@ -90,6 +90,9 @@ SUBROUTINE msda(obj,nk,nvars,sigma,delta,pf,dfmax,pmax,nlam,flmin,ulam,&
         alf=flmin**(1.0D0/(nlam-1.0D0))
     ENDIF
     DO l=1,nlam
+
+		dev = 0.0D0
+		
         IF(flmin>=1.0D0) THEN
             al=ulam(l)
         ELSE

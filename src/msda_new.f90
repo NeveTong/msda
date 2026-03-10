@@ -222,9 +222,9 @@ SUBROUTINE msda(obj,nk,nvars,sigma,delta,pf,dfmax,pmax,nlam,flmin,ulam,&
             dev_old = 0.5 * dev1_old - dev2_old + dev3_old
             IF(verbose==1) THEN
                 CALL intpr('Current Lambda',-1,l,1)
-                CALL dblepr('Obj-func Jump',-1,abs((dev_new-dev_old)/dev_new),1)
+                CALL dblepr('Obj-func Jump',-1,abs(dev_new-dev_old) / (abs(dev_new) + 1.0E-12),1)
             ENDIF
-            IF(abs((dev_new-dev_old)/dev_new)<sml) EXIT
+            IF(abs(dev_new-dev_old) / (abs(dev_new) + 1.0E-12)<sml) EXIT
             ! test deviance loop end
         ENDDO
 !--- final update variable save results------------
